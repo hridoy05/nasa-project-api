@@ -12,12 +12,15 @@ app.use(cors());
 app.use(morgan('combined'));
 console.log(os.cpus().length);
 app.use(express.json());
-//app.use(express.static(path.join(__dirname,'..', 'public')));
+app.use(express.static(path.resolve(__dirname, '..', 'public')));
 
 app.use('/planets', planetsRouter);
 app.use('/launches', launchesRouter);
-// app.get('/*', (req, res) => {
-//   res.sendFile(path.join(__dirname, '..', 'public', 'index.html'));
-// });
+
+console.log((path.resolve(__dirname, '..', 'public', 'index.html')));
+app.get('/', (req, res) => {
+    
+  res.sendFile(path.resolve(__dirname, '..', 'public', 'index.html'));
+});
 
 module.exports = app;

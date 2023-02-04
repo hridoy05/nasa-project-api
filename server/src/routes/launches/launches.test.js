@@ -1,7 +1,13 @@
 const request = require('supertest')
 const app = require('../../app')
+const {mongoConnect} = require('../../services/mongo')
 
-describe('Test Get /launches', ()=> {
+describe('Launches API', ()=> {
+  beforeAll( async ()=> {
+    await mongoConnect()
+  })
+  
+  describe('Test Get /launches', ()=> {
     test('It should respond with 200 success', async ()=> {
         const response = await request(app)
         .get('/launches')
@@ -68,3 +74,5 @@ describe('Test POST /launch', () => {
       });
     });
   });
+
+})

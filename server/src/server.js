@@ -1,5 +1,5 @@
 const http = require('http')
-const connectDB = require('../db/connect')
+const connectDB = require('./services/mongo')
 const app =require('./app')
 
 const {loadPlanetsData} = require('./models/planets.model')
